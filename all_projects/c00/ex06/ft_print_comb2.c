@@ -13,7 +13,7 @@
 
 void	render(char f, char s)
 {
-	char buff;
+	char	buff;
 
 	buff = (f / 10) + '0';
 	write(1, &buff, 1);
