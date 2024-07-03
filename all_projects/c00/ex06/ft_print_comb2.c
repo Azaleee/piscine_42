@@ -11,15 +11,29 @@
 /* ************************************************************************** */
 #include <unistd.h>
 
-void	ft_putchar(char c)
+void	render(char f, char s)
 {
-	write(1, &c, 1);
+	char buff;
+
+	buff = (f / 10) + '0';
+	write(1, &buff, 1);
+	buff = (f % 10) + '0';
+	write(1, &buff, 1);
+	write(1, " ", 1);
+	buff = (s / 10) + '0';
+	write(1, &buff, 1);
+	buff = (s % 10) + '0';
+	write(1, &buff, 1);
+	if (!(f == 98))
+	{
+		write(1, ", ", 2);
+	}
 }
 
 void	ft_print_comb2(void)
 {
-	int	f;
-	int	s;
+	char	f;
+	char	s;
 
 	f = 0;
 	s = 1;
@@ -27,24 +41,13 @@ void	ft_print_comb2(void)
 	{
 		if (!(f == s))
 		{
-			ft_putchar((f / 10) + '0');
-			ft_putchar((f % 10) + '0');
-			ft_putchar(' ');
-			ft_putchar((s / 10) + '0');
-			ft_putchar((s % 10) + '0');
-			ft_putchar(',');
-			ft_putchar(' ');
+			render(f, s);
 		}
 		s++;
-		if (s == 99)
+		if (s == 100)
 		{
 			s = f + 1;
 			f++;
 		}
 	}
-}
-
-int main(void)
-{
-	ft_print_comb2();
 }
