@@ -1,39 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_div_mod.c                              :+:      :+:    :+:   */
+/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mosmont <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/03 18:58:33 by mosmont           #+#    #+#             */
-/*   Updated: 2024/07/04 17:39:40 by mosmont          ###   ########.fr       */
+/*   Created: 2024/07/04 13:35:28 by mosmont           #+#    #+#             */
+/*   Updated: 2024/07/04 18:30:39 by mosmont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*#include <stdio.h>*/
 
-void	ft_ultimate_div_mod(int *a, int *b)
+void	ft_rev_int_tab(int *tab, int size)
 {
-	int	temp_a;
-	int	temp_b;
+	int	temp;
+	int	i;
 
-	temp_a = *a;
-	temp_b = *b;
-	*a = temp_a / temp_b;
-	*b = temp_a % temp_b;
+	i = 0;
+	while (i < size / 2)
+	{
+		temp = tab[i];
+		tab[i] = tab[size - 1 - i];
+		tab[size - 1 - i] = temp;
+		i++;
+	}
 }
 /*
 int	main(void)
 {
-	int	a;
-	int	b;
-	int	*pa;
-	int	*pb;
+	int	tab[] = {1, 2, 3, 4, 5};
+	int	i = 0;
 
-	a = 15;
-	b = 2;
-	pa = &a;
-	pb = &b;
-	printf("a = %d, b = %d\n", *pa, *pb);
-	ft_ultimate_div_mod(pa, pb);
-	printf("a = %d, b = %d", *pa, *pb);
+	while (i < 5)
+	{
+		printf("%d", tab[i]);
+		i++;
+	}
+	printf("\n");
+	i = 0;
+	ft_rev_int_tab(tab, 5);
+	while (i < 5)
+	{
+		printf("%d", tab[i]);
+		i++;
+	}
 }*/

@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_div_mod.c                              :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mosmont <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/03 18:58:33 by mosmont           #+#    #+#             */
-/*   Updated: 2024/07/04 17:39:40 by mosmont          ###   ########.fr       */
+/*   Created: 2024/07/04 13:22:33 by mosmont           #+#    #+#             */
+/*   Updated: 2024/07/04 18:16:41 by mosmont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*#include <stdio.h>*/
+#include <unistd.h>
 
-void	ft_ultimate_div_mod(int *a, int *b)
+void	ft_putstr(char *str)
 {
-	int	temp_a;
-	int	temp_b;
+	int	i;
 
-	temp_a = *a;
-	temp_b = *b;
-	*a = temp_a / temp_b;
-	*b = temp_a % temp_b;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
 }
 /*
 int	main(void)
 {
-	int	a;
-	int	b;
-	int	*pa;
-	int	*pb;
-
-	a = 15;
-	b = 2;
-	pa = &a;
-	pb = &b;
-	printf("a = %d, b = %d\n", *pa, *pb);
-	ft_ultimate_div_mod(pa, pb);
-	printf("a = %d, b = %d", *pa, *pb);
+	char	*str;
+	
+	str = "d";
+	ft_putstr(str);
 }*/

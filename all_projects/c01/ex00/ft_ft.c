@@ -6,12 +6,25 @@
 /*   By: mosmont <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:32:31 by mosmont           #+#    #+#             */
-/*   Updated: 2024/07/03 18:38:00 by mosmont          ###   ########.fr       */
+/*   Updated: 2024/07/04 16:05:45 by mosmont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+/*#include <stdio.h>*/
 
 void	ft_ft(int *nbr)
 {
 	*nbr = 42;
 }
+
+/*
+int	main(void)
+{
+	int	nbr;
+	int	*pnbr;
+
+	nbr = 0;
+	pnbr = &nbr;
+	ft_ft(pnbr);
+	printf("%d", *pnbr);
+}
+*/
