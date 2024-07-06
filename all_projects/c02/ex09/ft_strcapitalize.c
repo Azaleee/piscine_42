@@ -1,8 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mosmont <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/06 15:16:49 by mosmont           #+#    #+#             */
+/*   Updated: 2024/07/06 16:10:12 by mosmont          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include <stdio.h>
 
 char	*ft_strcapitalize(char *str)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	if (str[0] >= 'a' && str[0] <= 'z')
@@ -11,11 +22,10 @@ char	*ft_strcapitalize(char *str)
 	}
 	while (str[i] != '\0')
 	{
-		if ((str[i] >= 'a' && str[i] <= 'z') &&
-			((str[i - 1] < '0' || str[i - 1] > '9') &&
-			 (str[i - 1] < 'A' || str[i - 1] > 'Z') &&
-			 (str[i - 1] < 'a' || str[i - 1] > 'z'))) 
-			/*Si le char d'avant n'est pas une lettre ou un chiffre*/
+		if ((str[i] >= 'a' && str[i] <= 'z') && (
+				(str[i - 1] < '0' || str[i - 1] > '9') && (
+					str[i - 1] < 'A' || str[i - 1] > 'Z') && (
+					str[i - 1] < 'a' || str[i - 1] > 'z')))
 			str[i] -= 32;
 		else if ((str[i] >= 'A' && str[i] <= 'Z'))
 			str[i] += 32;
@@ -24,11 +34,9 @@ char	*ft_strcapitalize(char *str)
 	return (str);
 }
 /*
+Si le char d'avant n'est pas une lettre ou un chiffre
 int	main(void)
 {
-	char	str[] = "salut, comment tu vas ? 42mots quarante-deux; cinquante+et+un
-";
-
-	ft_strcapitalize(str);
-	printf("%s", str);
+	char	str[] = "salut, comment tu vas ? 
+	42mots quarante-deux; cinquante+et+un";
 }*/
