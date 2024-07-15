@@ -12,5 +12,3 @@ clean:
 
 fclean: clean
 	rm -f $(LIB_A)
-
-
