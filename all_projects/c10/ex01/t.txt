@@ -1,0 +1,58 @@
+Section : Manuel du programmeur Linux (3)
+Mise à jour de la version anglaise : 13 juin 2008
+Index Menu principal  
+NOM
+strerror, strerror_r - Obtenir le libellé d'un numéro d'erreur  
+SYNOPSIS
+
+#include <string.h>
+
+char *strerror(int errnum);
+
+int strerror_r(int errnum, char *buf, size_t buflen);
+            /* Conformité XSI */
+
+char *strerror_r(int errnum, char *buf, size_t buflen);
+            /* Spécificité GNU */
+
+Exigences de macros de test de fonctionnalités (voir feature_test_macros(7)) :
+
+La version de strerror_r() conforme à XSI est fournie si :
+(_POSIX_C_SOURCE >= 200112L || _XOPEN_SOURCE >= 600) && ! _GNU_SOURCE
+Autrement, c'est la version GNU qui est fournie.  
+DESCRIPTION
+La fonction strerror() renvoie une chaîne décrivant le code d'erreur passé en argument errnum, en utilisant éventuellement la catégorie LC_MESSAGES de la localisation pour sélectionner la langue appropriée. Cette chaîne ne doit pas être modifiée par l'application, mais peut être écrasée par un appel ultérieur à perror(3) ou strerror(). Aucune autre fonction de bibliothèque ne modifie cette chaîne.
+
+La fonction strerror_r() est identique à strerror() mais fonctionne correctement dans un environnement multithreads. Cette fonction est disponible en deux versions : une version conforme XSI spécifiée dans POSIX.1-2001 (disponible depuis la glibc 2.3.4) et une version spécifique GNU (disponible depuis la glibc 2.0). La version conforme XSI est fournie avec la configuration des macros de test de fonctionnalités indiquée dans le SYNOPSIS ; sinon c'est la version spécifique GNU. Si aucune macro de test de fonctionnalités n'est explicitement définie, alors (depuis la glibc 2.4) _POSIX_SOURCE est définie par défaut à la valeur 200112L, ainsi, c'est la version conforme XSI de strerror_r() qui est fournie par défaut.
+
+La version de strerror_r() conforme XSI est préférée pour les applications portables. Elle renvoie la chaîne dans le tampon buf de longueur buflen fourni par l'appelant.
+
+La version de strerror_r() spécifique GNU renvoie un pointeur sur une chaîne contenant le message d'erreur. Cela peut être soit un pointeur vers une chaîne que la fonction stocke dans buf, soit un pointeur vers une chaîne statique (immuable) (auquel cas buf n'est pas utilisé). Si la fonction stocke une chaîne dans buf, au plus buflen octets sont stockés (la chaîne peut être tronquée si buflen est trop petit) et la chaîne inclut toujours l'octet nul de terminaison.  
+VALEUR RENVOYÉE
+La fonction strerror() et la fonction strerror_r() spécifique à GNU renvoient la description correspondant au code transmis, ou un message « Unknown error nnn » si le numéro d'erreur n'existe pas.
+
+La fonction strerror_r() conforme XSI renvoie 0 si elle réussit et -1 si elle échoue et renseigne errno pour indiquer l'erreur.  
+ERREURS
+
+EINVAL
+    La valeur de errnum n'est pas un code d'erreur valide. 
+ERANGE
+    Le tampon fourni n'est pas assez grand. 
+
+ 
+CONFORMITÉ
+strerror() est spécifiée par POSIX.1-2001, C89 et C99. strerror_r() est spécifiée par POSIX.1-2001.
+
+La fonction strerror_r() spécifique GNU n'est pas une extension standard.
+
+POSIX.1-2001 permet à strerror() d'écrire errno si l'appel rencontre une erreur mais ne spécifie pas quelle valeur devrait être retournée comme résultat de fonction dans l'éventualité d'une erreur. Sur certains systèmes, strerror() renvoie NULL si le numéro d'erreur est inconnu. Sur d'autres, strerror() renvoie une chaîne du style « Error nnn occurred » et écrit EINVAL dans errno si le numéro d'erreur est inconnu.  
+VOIR AUSSI
+err(3), errno(3), error(3), perror(3), strsignal(3)  
+TRADUCTION
+
+Ce document est une traduction réalisée par Christophe Blaess <http://www.blaess.fr/christophe/> le 9 novembre 1996 et révisée le 17 juillet 2008.
+
+L'équipe de traduction a fait le maximum pour réaliser une adaptation française de qualité. La version anglaise la plus à jour de ce document est toujours consultable via la commande : « LANG=C man 3 strerror ». N'hésitez pas à signaler à l'auteur ou au traducteur, selon le cas, toute erreur dans cette page de manuel.
+
+ 
+Index
